@@ -1,14 +1,39 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { Toast } from "react-hot-toast";
+import { toast, Toast } from "react-hot-toast";
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
-  const [cartItem, setCartItem] = useState();
+  const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState();
   const [totalQuantities, setTotalQuantities] = useState();
   const [qty, setQty] = useState(1);
+
+  const onAdd = (product, quantity) => {
+    const checkProductInCart = cartItems.find(
+      (item) => item._id === product._id
+    );
+    setTotalPrice(
+      (prevTotalPrice) => prevTotalPrice + product.price * quantity
+    );
+    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
+    if (checkProductInCart) {
+      const updateCartItem = cartItems.map((cartProduct) => {
+        if (cartProduct._id === product._id)
+          return {
+            ...cartItems,
+            quantity: cartProduct.quantity + quantity,
+          };
+      });
+      setCartItems(updateCartItem);
+    } else {
+      product.quantity = quantity;
+      setCartItems([...cartItems, { ...product }]);
+    }
+    toast.success(`${qty} ${product.name} added to the cart`);
+  };
+
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
   };
@@ -22,12 +47,13 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{
         showCart,
-        cartItem,
+        cartItems,
         totalPrice,
         totalQuantities,
         qty,
         incQty,
         decQty,
+        onAdd,
       }}
     >
       {children}
