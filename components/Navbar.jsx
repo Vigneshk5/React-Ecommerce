@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
@@ -9,7 +11,7 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <p className="logo">
-        <Link href="/">Boat headphones</Link>
+        <Link href="/">ecommerce site</Link>
       </p>
       <button
         type="button"
