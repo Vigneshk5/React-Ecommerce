@@ -1,3 +1,5 @@
+/** @format */
+
 import product from "@/sanity_ecommerce/schemas/product";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast, Toast } from "react-hot-toast";
@@ -13,6 +15,14 @@ export const StateContext = ({ children }) => {
 
   let foundProduct;
   let index;
+
+  const onBuy = (product) => {
+    toast.success(`${product.name} purchaced`);
+  };
+
+  const onBuyCart = () => {
+    toast.success(`the items are purchaced`);
+  };
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
@@ -83,6 +93,8 @@ export const StateContext = ({ children }) => {
         incQty,
         decQty,
         onAdd,
+        onBuy,
+        onBuyCart,
         toggleCartItemQuantity,
       }}
     >
