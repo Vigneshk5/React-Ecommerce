@@ -22,20 +22,9 @@
     "react-icons": "^4.3.1",
     "stripe": "^8.209.0"
   },
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
-  "main": "next.config.js",
   "devDependencies": {
-    "eslint": "^8.36.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Vigneshk5/React-Ecommerce.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Vigneshk5/React-Ecommerce/issues"
-  },
-  "homepage": "https://github.com/Vigneshk5/React-Ecommerce#readme"
+    "@babel/preset-react": "^7.16.7",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.4"
+  }
 }
